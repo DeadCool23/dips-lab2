@@ -18,6 +18,16 @@ services:
       timeout: 5s
       retries: 10
 
+  bonus-service:
+    build: ./bonus-service
+    container_name: bonus-service
+    restart: on-failure
+    ports:
+      - "8050:8050"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   flight-service:
     build: ./flight-service
     container_name: flight-service
@@ -34,16 +44,6 @@ services:
     restart: on-failure
     ports:
       - "8070:8070"
-    depends_on:
-      postgres:
-        condition: service_healthy
-
-  bonus-service:
-    build: ./bonus-service
-    container_name: bonus-service
-    restart: on-failure
-    ports:
-      - "8050:8050"
     depends_on:
       postgres:
         condition: service_healthy
