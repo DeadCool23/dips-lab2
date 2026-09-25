@@ -43,6 +43,14 @@ jobs:
         timeout-minutes: 5
         run: |
           docker compose up -d
+          sleep 10
+          docker compose ps
+          echo "=== flight-service logs ==="
+          docker compose logs flight-service || true
+          echo "=== ticket-service logs ==="
+          docker compose logs ticket-service || true
+          echo "=== bonus-service logs ==="
+          docker compose logs bonus-service || true
           ./scripts/wait-script.sh
         env:
           WAIT_PORTS: 8080,8070,8060,8050
