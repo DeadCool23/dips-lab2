@@ -1,0 +1,16 @@
+server:
+  port: 8060
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/flights
+    username: program
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: UTC
+springdoc:
+  swagger-ui:
+    path: /api/v1/docs

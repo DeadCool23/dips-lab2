@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+services:
+  flight-url: ${FLIGHT_SERVICE_URL:http://flight-service:8060}
+  ticket-url: ${TICKET_SERVICE_URL:http://ticket-service:8070}
+  bonus-url: ${BONUS_SERVICE_URL:http://bonus-service:8050}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /api/v1/docs
+    url: /openapi.yaml
+    disable-swagger-default-url: true
+    try-it-out-enabled: true

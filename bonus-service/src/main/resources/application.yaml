@@ -1,0 +1,14 @@
+server:
+  port: 8050
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/privileges
+    username: program
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+springdoc:
+  swagger-ui:
+    path: /api/v1/docs
