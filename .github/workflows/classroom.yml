@@ -47,25 +47,6 @@ jobs:
         env:
           WAIT_PORTS: 8080,8070,8060,8050
 
-      - name: Dump diagnostics on failure
-        if: failure()
-        run: |
-          echo "=========== docker ps -a ==========="
-          docker ps -a || true
-
-          echo "=========== docker volume ls ==========="
-          docker volume ls || true
-
-          echo "=========== postgres inspect ==========="
-          docker inspect postgres || true
-
-          echo "=========== all logs ==========="
-          docker compose logs --no-color --tail=500 || true
-
-          echo "=========== disk / memory ==========="
-          df -h || true
-          free -m || true
-
       - name: Run API Tests
         uses: matt-ball/newman-action@master
         with:
